@@ -18,4 +18,9 @@ class PongTest < Minitest::Test
   def test_game
     game=Game.new
   end
+
+  def test_hit
+    game=Game.new
+    game.hit
+  end
 end

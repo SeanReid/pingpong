@@ -9,8 +9,9 @@
 # Each player serves two points in a row and then switch server. However, if a score of 10-10 is reached in any game,
 # then each server serves only one point and then the server is switched.
 
-
-
 class Game
+
+  def hit
+  end
 
 end
