@@ -20,7 +20,13 @@ class Game
   end
 
   def score
+    index = 0
     score = 0
+    15.times do
+      score += @hits[index]
+    end
+    index += 1
+    return score
   end
 
 end

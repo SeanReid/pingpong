@@ -24,4 +24,11 @@ class PongTest < Minitest::Test
     assert_equal 0, @game.score
   end
 
+  def test_15_score
+    15.times do
+      @game.hit(1)
+    end
+    assert_equal 15, @game.score
+  end
+
 end
