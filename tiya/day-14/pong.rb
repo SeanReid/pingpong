@@ -1,32 +1,31 @@
-# Scoring
-# A match is played best 3 of 5 games (or 4/7 or 5/9). For each game, the first player to reach 11 points wins that game,
-# however a game must be won by at least a two point margin.
-# A point is scored after each ball is put into play (not just when the server wins the point as in volleyball).
-#
-# The edges of the table are part of the legal table surface, but not the sides.
-#
-# Flow of the Match
-# Each player serves two points in a row and then switch server. However, if a score of 10-10 is reached in any game,
-# then each server serves only one point and then the server is switched.
+require 'pry'
 
 class Game
 
   def initialize
-    @hits = []
+    @points = {}
   end
 
-  def hit(point)
-    @hits << point
+  def record_winner_of_point(player)
+    binding.pry
+    @points[player] ||= 0
+    @points[player] += 1
   end
 
-  def score
-    index = 0
-    score = 0
-    15.times do
-      score += @hits[index]
+  def winner
+    if @points[:bill] > @points[:ted]
+      return :bill
+    else
+      return :ted
     end
-    index += 1
-    return score
   end
 
 end
+
+#
+# has_value?(value) → true or false click to toggle source
+# Returns true if the given value is present for some key in hsh.
+#
+# h = { "a" => 100, "b" => 200 }
+# h.has_value?(100)   #=> true
+# h.has_value?(999)   #=> false

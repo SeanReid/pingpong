@@ -1,34 +1,28 @@
-# Scoring
-# A match is played best 3 of 5 games (or 4/7 or 5/9). For each game, the first player to reach 11 points wins that game,
-# however a game must be won by at least a two point margin.
-# A point is scored after each ball is put into play (not just when the server wins the point as in volleyball).
-#
-# The edges of the table are part of the legal table surface, but not the sides.
-#
-# Flow of the Match
-# Each player serves two points in a row and then switch server. However, if a score of 10-10 is reached in any game,
-# then each server serves only one point and then the server is switched.
-
 require 'minitest/autorun'
 require 'minitest/pride'
 require './pong'
 
 class PongTest < Minitest::Test
 
-  def setup
-    @game=Game.new
-  end
-
-  def test_hit
-    @game.hit(0)
-    assert_equal 0, @game.score
-  end
-
-  def test_15_score
-    15.times do
-      @game.hit(1)
+  def test_2_player_score
+    game=Game.new
+    game.record_winner_of_point(:ted)
+    21.times do
+      game.record_winner_of_point(:bill)
     end
-    assert_equal 15, @game.score
+
+    assert_equal :bill, game.winner
   end
+
+  def test_other_player_wins
+    game=Game.new
+    game.record_winner_of_point(:bill)
+    21.times do
+      game.record_winner_of_point(:ted)
+    end
+
+    assert_equal :ted, game.winner
+  end
+
 
 end
