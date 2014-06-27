@@ -11,7 +11,16 @@
 
 class Game
 
-  def hit
+  def initialize
+    @hits = []
+  end
+
+  def hit(point)
+    @hits << point
+  end
+
+  def score
+    score = 0
   end
 
 end

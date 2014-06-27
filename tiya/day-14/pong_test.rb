@@ -15,12 +15,13 @@ require './pong'
 
 class PongTest < Minitest::Test
 
-  def test_game
-    game=Game.new
+  def setup
+    @game=Game.new
   end
 
   def test_hit
-    game=Game.new
-    game.hit
+    @game.hit(0)
+    assert_equal 0, @game.score
   end
+
 end
