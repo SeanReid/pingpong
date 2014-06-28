@@ -7,9 +7,16 @@ class Game
   end
 
   def record_winner_of_point(player)
-    binding.pry
     @points[player] ||= 0
     @points[player] += 1
+  end
+
+  def full_game?
+    if @points[:bill] >= 21 || @points[:ted] >= 21
+      return true
+    else
+      return false
+    end
   end
 
   def winner
@@ -21,11 +28,3 @@ class Game
   end
 
 end
-
-#
-# has_value?(value) → true or false click to toggle source
-# Returns true if the given value is present for some key in hsh.
-#
-# h = { "a" => 100, "b" => 200 }
-# h.has_value?(100)   #=> true
-# h.has_value?(999)   #=> false
