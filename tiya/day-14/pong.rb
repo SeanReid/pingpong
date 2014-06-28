@@ -11,6 +11,15 @@ class Game
     @points[player] += 1
   end
 
+  def lead_by_2?
+    lead_by = @points[:bill] - @points[:ted]
+    if lead_by >= 2 || lead_by <= -2
+      return true
+    else
+      return false
+    end
+  end
+
   def full_game?
     if @points[:bill] >= 21 || @points[:ted] >= 21
       return true
