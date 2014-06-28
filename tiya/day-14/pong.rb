@@ -36,4 +36,10 @@ class Game
     end
   end
 
+  def run
+    full_game?
+    lead_by_2?
+    winner
+  end
+
 end
