@@ -28,6 +28,12 @@ class Game
     end
   end
 
+  def enough_to_win?
+    if lead_by_2? && full_game?
+      @enough_to_win = true
+    end
+  end
+
   def winner
     if @points[:bill] > @points[:ted]
       return :bill
@@ -37,8 +43,8 @@ class Game
   end
 
   def run
-    full_game?
-    lead_by_2?
+    @enough_to_win = false
+    enough_to_win?
     winner
   end
 
