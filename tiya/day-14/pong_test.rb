@@ -28,7 +28,7 @@ class PongTest < Minitest::Test
     10.times do
       game.record_winner_of_point(:ted)
     end
-    assert_equal false, game.full_game?
+    assert_equal nil, game.full_game?
   end
 
   def test_lead_by_2
@@ -58,13 +58,13 @@ class PongTest < Minitest::Test
     assert_equal :ted , game.run
   end
 
-  def test_over_21_lead_by_2
+  def test_under_21_lead_by_2_winner
     game=Game.new
     game.record_winner_of_point(:bill)
-    22.times do
+    20.times do
       game.record_winner_of_point(:ted)
     end
-    assert_equal true , game.enough_to_win?
+    assert_equal nil, game.run
   end
 
 end

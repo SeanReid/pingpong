@@ -13,38 +13,25 @@ class Game
 
   def lead_by_2?
     lead_by = @points[:bill] - @points[:ted]
-    if lead_by >= 2 || lead_by <= -2
-      return true
-    else
-      return false
-    end
+    return true if lead_by >= 2 || lead_by <= -2
   end
 
   def full_game?
-    if @points[:bill] >= 21 || @points[:ted] >= 21
-      return true
-    else
-      return false
-    end
-  end
-
-  def enough_to_win?
-    if lead_by_2? && full_game?
-      @enough_to_win = true
-    end
+    return true if @points[:bill] >= 21 || @points[:ted] >= 21
   end
 
   def winner
-    if @points[:bill] > @points[:ted]
-      return :bill
-    else
-      return :ted
+    if full_game?
+      if @points[:bill] > @points[:ted]
+        return :bill
+      else
+        return :ted
+      end
     end
   end
 
   def run
-    @enough_to_win = false
-    enough_to_win?
+    lead_by_2?
     winner
   end
 
